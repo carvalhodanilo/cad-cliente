@@ -1,4 +1,8 @@
-# senior-challenge-be
+# cad-clientes-be
+
+Requisitos: 
+* JDK 11
+* Docker Desktop
 
 Subindo o servidor localmente:
 
