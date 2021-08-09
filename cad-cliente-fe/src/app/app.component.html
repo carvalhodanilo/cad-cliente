@@ -1,0 +1,25 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">
+          menu
+      </mat-icon>
+      <mat-icon *ngIf="sidenav.opened">
+          close
+      </mat-icon>
+  </button>
+  Bia Mantovani Jóias
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <app-button [title]="'Home'" [type]="'basic'" [icon]="'home'" [classList]="'menu-button'" [routerLink]="['/home']"></app-button>
+    <app-button [title]="'Clientes'" [type]="'basic'" [icon]="'person'" [classList]="'menu-button'" [routerLink]="['/clientes']"></app-button>
+
+      <mat-divider></mat-divider>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <div class="content mat-elevation-z8">
+          <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

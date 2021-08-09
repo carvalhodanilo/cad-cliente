@@ -1,0 +1,10 @@
+<mat-card class="title m-1 d-flex justify-content-between">
+    <mat-card-title>{{ title }}</mat-card-title>
+    <div>
+        <app-button *ngFor="let action of actionsList; let i = index" 
+                     [icon]="action?.icon" 
+                     [type]="'basic'"
+                     (click)="onClick(action)">
+        </app-button>
+    </div>
+</mat-card>

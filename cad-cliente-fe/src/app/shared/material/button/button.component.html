@@ -1,0 +1,13 @@
+<button *ngIf="type ==='basic'" [class]="classList" mat-button [color]="color">
+    <mat-icon *ngIf="icon">{{icon}}</mat-icon>
+    <span *ngIf="icon">{{title}}</span>
+</button>
+
+<button *ngIf="type ==='raised'" [class]="classList" mat-raised-button [color]="color">
+    <mat-icon *ngIf="icon">{{icon}}</mat-icon>
+    <span *ngIf="icon">{{title}}</span>
+</button>
+
+
+
+

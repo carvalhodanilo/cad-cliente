@@ -1,0 +1,64 @@
+<mat-card class="m-1 example-table-container ">
+    <div class="example-loading-shade"
+         *ngIf="loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <mat-table class="mat-elevation-z8" [dataSource]="table" matSort matSortActive="id"
+        matSortDirection="asc" matSortDisableClear>
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
+            <mat-cell *matCellDef="let dataRow">{{dataRow.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let dataRow">{{dataRow.nome}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="pessoa">
+            <mat-header-cell *matHeaderCellDef>Hóspede</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let dataRow">{{dataRow?.pessoa?.nome}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="quarto">
+            <mat-header-cell *matHeaderCellDef>Número do quarto</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let dataRow">{{dataRow?.quarto?.nome}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="garagem">
+            <mat-header-cell *matHeaderCellDef>Garagem</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let dataRow">{{dataRow?.garagem ? 'Sim' : 'Não'}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="closed">
+            <mat-header-cell *matHeaderCellDef>Check-out</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let dataRow"><mat-icon>{{dataRow?.closed ? 'done' : 'close'}}</mat-icon></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valorTotal">
+            <mat-header-cell *matHeaderCellDef>Valor total / atual</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let dataRow">{{dataRow?.valorTotal}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="cpf">
+            <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let dataRow">{{dataRow.cpf}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns" 
+                  [class.row-link]="true" 
+                  [class.row-is-clicked]="item?.id == row.id && type === 'select'"
+                  (click)="onClickRow(row)">
+        </mat-row>
+    </mat-table>
+    <mat-paginator #paginator 
+                    [length]="pager?.total" 
+                    [pageSize]="pager?.size" 
+                    [pageSizeOptions]="[3, 5, 10]"
+                    (page)="onPaginate($event)">
+    </mat-paginator>
+</mat-card>

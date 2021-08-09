@@ -1,0 +1,27 @@
+<app-page-title [title]="pageTitle" [actionsList]="actions" (onClickAction)="onClickAction($event)"></app-page-title>
+<mat-card class="m-1">
+    <div>
+        <form [formGroup]="form">
+            <div class="form-row d-flex">
+                <div class="col-md-12">
+                    <app-input [field]="'nome'" [label]="'Nome'" [form]="form" [placeholder]="'Nome'"></app-input>
+                </div>
+            </div>
+            <div class="form-row d-flex">
+                <div class="col-md-6">
+                    <app-input [field]="'cpf'" [label]="'CPF'" [form]="form" [placeholder]="'CPF'"></app-input>
+                </div>
+                <div class="col-md-6">
+                    <app-input [field]="'telefone'" [label]="'Telefone'" [form]="form" [placeholder]="'Telefone'">
+                    </app-input>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-end" *ngIf="currentAction !== 'visualizar'">
+                <div class="d-flex col-md-3">
+                    <app-button [title]="'Limpar'" [type]="'basic'" [icon]="'auto_fix_normal'" [classList]="'float-right'" (click)="onReset()"></app-button>
+                    <app-button [title]="'Salvar'" [type]="'basic'" [icon]="'save'" [classList]="'float-right'" (click)="onSubmit()"></app-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-card>
